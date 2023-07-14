@@ -1,0 +1,14 @@
+{
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.autopep8"
+    },
+    "python.formatting.provider": "none",
+    "python.analysis.extraPaths": [
+        "./app/dao",
+        "./ml/data_preparation",
+        "./app",
+        "./utils",
+        "./database_initialization",
+        "./ml"
+    ]
+}
