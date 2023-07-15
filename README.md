@@ -26,8 +26,8 @@
 1)
      REQUEST ->  /trigger_report , METHOD -> POST <br/>
      RESPONSE -> report_id <br/><br/>
-       push the report details inside with report_table with following report_id  , {status -> Running} , timestamp , {location -> none}<br/>
-       check for latest report entry in report_table whose status is completed  and is of same day and same hour<br/>
+       &nbsp;&nbsp; &nbsp;&nbsp;  push the report details inside with report_table with following report_id  , {status -> Running} , timestamp , {location -> none}<br/>
+        &nbsp;&nbsp; &nbsp;&nbsp; check for latest report entry in report_table whose status is completed  and is of same day and same hour<br/>
          -> if present <br/>
              update the location of report to latest_report_location<br/>
              make the status completed<br/>
@@ -40,10 +40,10 @@
 2)
      REQUEST -> /get_report?report_id = {report_id from trigger_report }   ,METHOD -> GET <br/>
      RESPONSE -> csv file  <br/><br/>
-      &nbsp;&nbsp;            format of csv file <br/>
-      &nbsp;&nbsp;            {store_id, uptime_last_hr , downtime_last_hr , uptime_last_day , downtime_last_day , uptime_last_week , downtime_last_week}<br/>
+      &nbsp;&nbsp; &nbsp;&nbsp;            format of csv file <br/>
+      &nbsp;&nbsp; &nbsp;&nbsp;            {store_id, uptime_last_hr , downtime_last_hr , uptime_last_day , downtime_last_day , uptime_last_week , downtime_last_week}<br/>
       <br/>
-       &nbsp;&nbsp;        report status is running  ,then return running<br/>
-       &nbsp;&nbsp;        report status is completed , then return csv file from the location of report     <br/> 
+       &nbsp;&nbsp; &nbsp;&nbsp;       report status is running  ,then return running<br/>
+       &nbsp;&nbsp; &nbsp;&nbsp;        report status is completed , then return csv file from the location of report     <br/> 
 
                   
