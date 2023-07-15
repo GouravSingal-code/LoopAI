@@ -1,19 +1,19 @@
 # LoopAI
 
-#steps to run projects
-1) cd database_initialization/
-2) python migration.py
-  ( create all required tables at one go )
+# steps to run projects
+1) cd database_initialization/<br/>/<br/>
+2) python migration.py<br/>
+  ( create all required tables at one go )<br/>/<br/>
 4) python initialized_data.py <br/>
    ---- this will take some time-----<br/>
    ( push the data present in data source in the subsequent table and in the required table )<br/>
    ( creating the machine learning data set { input , output } )<br/>
-   ( training of model using  LSTM  with step interpolation ) <br/>
-6) cd ..
-7) python run.py  <br/>
+   ( training of model using  LSTM  with step interpolation ) <br/>/<br/>
+6) cd .. /<br/>/<br/>
+7) python run.py  <br/>/<br/>
    ( start the 4 scheduler) <br/>
       1) pooling data from restaurant in every hour <br/>
-         # pooling data request for a restaurant<br/>
+           ----pooling data request for a restaurant----<br/>
            SUCCESS ->  put the status of restaurant in dataset<br/>
            FAILED -> predict the status of restaurant and then put it in dataset<br/>
       3) updating the hourly_report_table in every hour from the data we get from pooling
@@ -22,12 +22,12 @@
   
 
 
-2 routes  
+# 2 routes  
 1)
      REQUEST ->  /trigger_report , METHOD -> POST
      RESPONSE -> report_id
-     # push the report details inside with report_table with following report_id  , {status -> Running} , timestamp , {location -> none}
-     # check for latest report entry in report_table whose status is completed  and is of same day and same hour
+     #push the report details inside with report_table with following report_id  , {status -> Running} , timestamp , {location -> none}
+     #check for latest report entry in report_table whose status is completed  and is of same day and same hour
         -> if present 
               update the location of report to latest_report_location
               make the status completed
@@ -42,9 +42,8 @@
      RESPONSE -> csv file 
                 # format of csv file
                   store_id, uptime_last_hr , downtime_last_hr , uptime_last_day , downtime_last_day , uptime_last_week , downtime_last_week
-
-
-     #  report status is running  ,then return running
-     #  report status is completed , then return csv file from the location of report      
+  
+     #report status is running  ,then return running
+     #report status is completed , then return csv file from the location of report      
 
                   
