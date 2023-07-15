@@ -28,10 +28,10 @@
      RESPONSE -> report_id <br/>
      #push the report details inside with report_table with following report_id  , {status -> Running} , timestamp , {location -> none}<br/>
      #check for latest report entry in report_table whose status is completed  and is of same day and same hour<br/>
-        -> if present <br/>
+         -> if present <br/>
               update the location of report to latest_report_location<br/>
               make the status completed<br/>
-        -> if not<br/>
+        -> if not <br/>
               create hourly , daily and weekly csv file from respective table<br/>
               merge all 3 files and get the location<br/>
               update the status(completed) and location (merge file location)<br/>
