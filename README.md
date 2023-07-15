@@ -25,7 +25,7 @@
 # 2 routes  
 1)
      REQUEST ->  /trigger_report , METHOD -> POST
-     RESPONSE -> report_id
+     RESPONSE -> report_id <br/>
      #push the report details inside with report_table with following report_id  , {status -> Running} , timestamp , {location -> none}<br/>
      #check for latest report entry in report_table whose status is completed  and is of same day and same hour<br/>
         -> if present <br/>
@@ -39,11 +39,11 @@
      
 2)
      REQUEST -> /get_report?report_id = {report_id from trigger_report }   ,METHOD -> GET
-     RESPONSE -> csv file 
-                # format of csv file
-                  store_id, uptime_last_hr , downtime_last_hr , uptime_last_day , downtime_last_day , uptime_last_week , downtime_last_week
-  
-     #report status is running  ,then return running
-     #report status is completed , then return csv file from the location of report      
+     RESPONSE -> csv file  <br/>
+                # format of csv file <br/>
+                  store_id, uptime_last_hr , downtime_last_hr , uptime_last_day , downtime_last_day , uptime_last_week , downtime_last_week<br/>
+      <br/>
+     #report status is running  ,then return running<br/>
+     #report status is completed , then return csv file from the location of report     <br/> 
 
                   
