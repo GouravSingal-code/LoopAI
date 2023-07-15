@@ -28,13 +28,13 @@
      RESPONSE -> report_id <br/><br/>
        &nbsp;&nbsp; &nbsp;&nbsp;  push the report details inside with report_table with following report_id  , {status -> Running} , timestamp , {location -> none}<br/>
         &nbsp;&nbsp; &nbsp;&nbsp; check for latest report entry in report_table whose status is completed  and is of same day and same hour<br/>
-         -> if present <br/>
-             update the location of report to latest_report_location<br/>
-             make the status completed<br/>
-         -> if not <br/>
-             create hourly , daily and weekly csv file from respective table<br/>
-             merge all 3 files and get the location<br/>
-             update the status(completed) and location (merge file location)<br/>
+         &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; -> if present <br/>
+          &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;   update the location of report to latest_report_location<br/>
+          &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;   make the status completed<br/>
+         &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; -> if not <br/>
+         &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;    create hourly , daily and weekly csv file from respective table<br/>
+          &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;   merge all 3 files and get the location<br/>
+           &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   update the status(completed) and location (merge file location)<br/>
           <br/>
      
 2)
@@ -43,7 +43,7 @@
       &nbsp;&nbsp; &nbsp;&nbsp;            format of csv file <br/>
       &nbsp;&nbsp; &nbsp;&nbsp;            {store_id, uptime_last_hr , downtime_last_hr , uptime_last_day , downtime_last_day , uptime_last_week , downtime_last_week}<br/>
       <br/>
-       &nbsp;&nbsp; &nbsp;&nbsp;       report status is running  ,then return running<br/>
-       &nbsp;&nbsp; &nbsp;&nbsp;        report status is completed , then return csv file from the location of report     <br/> 
+       &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;      report status is running  ,then return running<br/>
+       &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;        report status is completed , then return csv file from the location of report     <br/> 
 
                   
