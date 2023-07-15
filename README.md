@@ -3,6 +3,9 @@
 # demo link
   https://www.loom.com/share/b8ad71a7e6954b8f94f0c64666273de3?sid=42e0bc14-4325-4e52-b563-6ffa98d1fcd8
 
+# Doc
+  https://drive.google.com/file/d/1vHDLU0iiwenJ-9hAExydJdIVV1Ijazqz/view?usp=sharing
+
 # steps to run projects
 1) cd database_initialization/<br/><br/>
 2) python migration.py<br/>
