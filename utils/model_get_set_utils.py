@@ -1,14 +1,12 @@
-import pickle
+import pickle,os
 
-def save_model(model):
-    model_filename = "lstmModel.pkl"
-    with open(model_filename, 'wb') as file:
+def save_model(model,location):
+    with open(os.path.abspath(location), 'wb') as file:
         pickle.dump(model, file)
 
 
-def get_model(name):
-    # Load the model from the file
-    with open(name, 'rb') as file:
+def get_model(location):
+    with open(os.path.abspath(location), 'rb') as file:
         model = pickle.load(file)
     return model
 

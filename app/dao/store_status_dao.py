@@ -1,14 +1,11 @@
-import sys
-sys.path.append('../../database_initialization')
+
+from calender_utils import get_utc_to_local_timezone
 from database_connection import DatabaseConnection
 
-
-from calender_utils import get_utc_to_timezone
 
 
 def create_store_status_table():
     db_connection = DatabaseConnection()
-
     create_storeStatus_table_query = '''
     CREATE TABLE IF NOT EXISTS storeStatus (
         store_id BIGINT,
@@ -46,7 +43,7 @@ def getAvailableStatus(store_id , date , start_time , end_time, time_zone):
     time_stamps = []
     activity_status = []
     for row in availableStatus:
-      standard_time = get_utc_to_timezone(row[4] , time_zone)
+      standard_time = get_utc_to_local_timezone(row[4] , time_zone)
       if start_time < standard_time < end_time:
          time_stamps.append(standard_time)
          activity_status.append(1 if row[1] =='active' else 0) # status
@@ -55,7 +52,7 @@ def getAvailableStatus(store_id , date , start_time , end_time, time_zone):
 
 def insert_store_status_details(store_status):
     db_connection = DatabaseConnection()
-    db_connection.execute_query("INSERT OR IGNORE INTO storeStatus (store_id, status, timeStamp_utc, date, time, day) VALUES (?, ?, ?, ?, ?, ?)", (store_status.store_id, store_status.status, store_status.timeStamp_utc, store_status.date, store_status.time, store_status.day))
+    db_connection.execute_query("INSERT OR REPLACE  INTO storeStatus (store_id, status, timeStamp_utc, date, time, day) VALUES (?, ?, ?, ?, ?, ?)", (store_status.store_id, store_status.status, store_status.timeStamp_utc, store_status.date, store_status.time, store_status.day))
     db_connection.commit()
     db_connection.close()
 

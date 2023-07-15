@@ -1,12 +1,8 @@
-import sys
-sys.path.append('../../database_initialization')
-
+import datetime
 from database_connection import DatabaseConnection
 
-import datetime
 def create_store_business_hrs_table():
     db_connection = DatabaseConnection()
-
     create_storeBusinessHrs_table_query = '''
     CREATE TABLE IF NOT EXISTS storeBusinessHrs (
         store_id BIGINT,
@@ -49,7 +45,7 @@ def getNonBusinessHrsDetails(start_time , end_time):
 
 def insert_business_hrs_details(store_business_hr):
     db_connection = DatabaseConnection()
-    db_connection.execute_query("INSERT OR IGNORE INTO storeBusinessHrs (store_id, day, start_time , end_time) VALUES (?, ?, ?, ?)", (store_business_hr.store_id, store_business_hr.day, store_business_hr.start_time, store_business_hr.end_time))
+    db_connection.execute_query("INSERT OR REPLACE  INTO storeBusinessHrs (store_id, day, start_time , end_time) VALUES (?, ?, ?, ?)", (store_business_hr.store_id, store_business_hr.day, store_business_hr.start_time, store_business_hr.end_time))
     db_connection.commit()
     db_connection.close()
    

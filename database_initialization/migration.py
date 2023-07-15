@@ -1,6 +1,10 @@
 import sys
-sys.path.append('../app')
-sys.path.append('../utils')
+sys.path.append('c:\\Users\\GOURAV\\Desktop\\loopAI')
+sys.path.append('c:\\Users\\GOURAV\\Desktop\\loopAI\\app')
+sys.path.append('c:\\Users\\GOURAV\\Desktop\\loopAI\\data_source')
+sys.path.append('c:\\Users\\GOURAV\\Desktop\\loopAI\\database_initialization')
+sys.path.append('c:\\Users\\GOURAV\\Desktop\\loopAI\\ml')
+sys.path.append('c:\\Users\\GOURAV\\Desktop\\loopAI\\utils')
 
 from dao.daily_report_dao import create_daily_report_table
 from dao.dataset_dao import create_dataset_table
