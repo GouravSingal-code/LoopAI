@@ -19,7 +19,6 @@ def create_hourly_report_table():
 
 def hourly_task(last_hr_start , last_hr_end , date):
     db_connection = DatabaseConnection()
-    print(last_hr_start , last_hr_end , date)
     get_data = '''
     SELECT dataSet.store_id,
         SUM(CASE WHEN time >= ? AND time <= ? AND date = ? THEN Cast(status as int)*? ELSE 0 END) AS uptime_last_hr,

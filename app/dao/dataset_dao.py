@@ -34,16 +34,16 @@ def insert_dataset(dataset):
 # if we get the response then we allocate the complete hour to that response
 # else we predict the response from out machine learning model and then allocate the complete hour to that predicted response
 
-# def update_the_dataset():
-#     db_connection = DatabaseConnection()
-#     responses = pool_restaurant_status()    
-#     for response in responses:
-#         if response.success == True:
-#             db_connection.execute_query("INSERT OR REPLACE INTO dataSet (store_id, date, time, status) VALUES (?, ?, ?, ?)", (response.response.store_id,response.date, response.time,response.response.status,))
-#         else:
-#             #predict 
-#             # to predict we need =  what happend on previous day and what happend till now on the given day
-#             db_connection.execute_query("INSERT OR REPLACE INTO dataSet (store_id, date, time, status) VALUES (?, ?, ?, ?)", (response.response.store_id,response.date, response.time,prediction))
-#     db_connection.commit()
-#     db_connection.close()
+def update_the_dataset():
+    db_connection = DatabaseConnection()
+    responses = pool_restaurant_status()    
+    for response in responses:
+        if response.success == True:
+            db_connection.execute_query("INSERT OR REPLACE INTO dataSet (store_id, date, time, status) VALUES (?, ?, ?, ?)", (response.response.store_id,response.date, response.time,response.response.status,))
+        else:
+            #predict 
+            # to predict we need =  what happend on previous day and what happend till now on the given day
+            db_connection.execute_query("INSERT OR REPLACE INTO dataSet (store_id, date, time, status) VALUES (?, ?, ?, ?)", (response.response.store_id,response.date, response.time,prediction))
+    db_connection.commit()
+    db_connection.close()
 

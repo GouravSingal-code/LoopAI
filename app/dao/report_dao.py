@@ -17,7 +17,6 @@ def create_report_table():
 
 def get_report_status_location(report_id):
     db_connection = DatabaseConnection()
-    print(report_id)
     rows = db_connection.execute_query("SELECT report.status,report.location FROM report WHERE report_id=?", (report_id,))
     return rows
 
