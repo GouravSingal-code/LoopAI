@@ -1,5 +1,6 @@
 from database_connection import DatabaseConnection
 from dao.hourly_report_dao import pool_restaurant_status
+from modeling.prediction import prediction
 
 def create_dataset_table():
     db_connection = DatabaseConnection()
@@ -34,16 +35,36 @@ def insert_dataset(dataset):
 # if we get the response then we allocate the complete hour to that response
 # else we predict the response from out machine learning model and then allocate the complete hour to that predicted response
 
+def status_till_now(store_id, date , time):
+    db_connection = DatabaseConnection()
+    get_status_till_now = '''
+      Select dataSet.status from dataSet
+      where dataSet.store_id = ? and dataSet.date=? and dataSet.time <= ?
+    '''
+    db_connection.execute_query(get_status_till_now, (store_id, date, time,))
+
+def previous_day_status(store_id, date):
+    db_connection = DatabaseConnection()
+    get_previous_day_status = '''
+      Select dataSet.status from dataSet
+      where dataSet.store_id = ? and dataSet.date=?
+    '''
+    db_connection.execute_query(get_previous_day_status, (store_id, date,))    
+
 def update_the_dataset():
     db_connection = DatabaseConnection()
     responses = pool_restaurant_status()    
     for response in responses:
+        calender = Calendar(response.timestamp)
         if response.success == True:
-            db_connection.execute_query("INSERT OR REPLACE INTO dataSet (store_id, date, time, status) VALUES (?, ?, ?, ?)", (response.response.store_id,response.date, response.time,response.response.status,))
+            db_connection.execute_query("INSERT OR REPLACE INTO dataSet (store_id, date, time, status) VALUES (?, ?, ?, ?)", (response.response.store_id,calender.date, calender.time,response.response.status,))
         else:
             #predict 
             # to predict we need =  what happend on previous day and what happend till now on the given day
-            db_connection.execute_query("INSERT OR REPLACE INTO dataSet (store_id, date, time, status) VALUES (?, ?, ?, ?)", (response.response.store_id,response.date, response.time,prediction))
+            data = status_till_now(response.response.store_id, calender.date , response.time)
+            data.append(response.response.store_id, previous_day_status(calender.last_date))
+            predict = prediction(data)
+            db_connection.execute_query("INSERT OR REPLACE INTO dataSet (store_id, date, time, status) VALUES (?, ?, ?, ?)", (response.response.store_id,calender.date, calender.time,predict))
     db_connection.commit()
     db_connection.close()
 

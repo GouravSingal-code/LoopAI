@@ -39,12 +39,12 @@ def pool_restaurant_status():
                 # Successful response
                 if 'application/json' not in response.headers.get('Content-Type', ''):
                     response_text = await response.text()
-                    return {'success':True, 'time':datetime.datetime.now().strftime('%H:%M') , 'date':datetime.datetime.now().strftime('%Y-%m-%d'), response:response_text}
+                    return {'success':True, 'timestamp':datetime.datetime.now() , response:response_text}
                 else:
-                    return {'success':True, 'time':datetime.datetime.now().strftime('%H:%M') , 'date':datetime.datetime.now().strftime('%Y-%m-%d'), response:await response.json()}
+                    return {'success':True, 'timestamp':datetime.datetime.now() , response:await response.json()}
             else:
                 # Unsuccessful response
-                return {'success':False, 'time':datetime.datetime.now().strftime('%H:%M') , 'date':datetime.datetime.now().strftime('%Y-%m-%d'),  response:{store_id:url.split('/')[-1]}}
+                return {'success':False, 'timestamp':datetime.datetime.now(),  response:{store_id:url.split('/')[-1]}}
 
     async def make_api_calls(urls):
         async with aiohttp.ClientSession() as session:
