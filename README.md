@@ -1,16 +1,16 @@
 # LoopAI
 
 # steps to run projects
-1) cd database_initialization/<br/>/<br/>
+1) cd database_initialization/<br/><br/>
 2) python migration.py<br/>
-  ( create all required tables at one go )<br/>/<br/>
+  ( create all required tables at one go )<br/><br/>
 4) python initialized_data.py <br/>
    ---- this will take some time-----<br/>
    ( push the data present in data source in the subsequent table and in the required table )<br/>
    ( creating the machine learning data set { input , output } )<br/>
-   ( training of model using  LSTM  with step interpolation ) <br/>/<br/>
-6) cd .. /<br/>/<br/>
-7) python run.py  <br/>/<br/>
+   ( training of model using  LSTM  with step interpolation ) <br/><br/>
+6) cd .. /<br/><br/>
+7) python run.py  <br/><br/>
    ( start the 4 scheduler) <br/>
       1) pooling data from restaurant in every hour <br/>
            ----pooling data request for a restaurant----<br/>
@@ -26,16 +26,16 @@
 1)
      REQUEST ->  /trigger_report , METHOD -> POST
      RESPONSE -> report_id
-     #push the report details inside with report_table with following report_id  , {status -> Running} , timestamp , {location -> none}
-     #check for latest report entry in report_table whose status is completed  and is of same day and same hour
-        -> if present 
-              update the location of report to latest_report_location
-              make the status completed
-        -> if not
-              create hourly , daily and weekly csv file from respective table
-              merge all 3 files and get the location
-              update the status(completed) and location (merge file location)
-          
+     #push the report details inside with report_table with following report_id  , {status -> Running} , timestamp , {location -> none}<br/>
+     #check for latest report entry in report_table whose status is completed  and is of same day and same hour<br/>
+        -> if present <br/>
+              update the location of report to latest_report_location<br/>
+              make the status completed<br/>
+        -> if not<br/>
+              create hourly , daily and weekly csv file from respective table<br/>
+              merge all 3 files and get the location<br/>
+              update the status(completed) and location (merge file location)<br/>
+          <br/>
      
 2)
      REQUEST -> /get_report?report_id = {report_id from trigger_report }   ,METHOD -> GET
