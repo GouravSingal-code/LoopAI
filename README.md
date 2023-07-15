@@ -5,17 +5,17 @@
 2) python migration.py
   ( create all required tables at one go )
 4) python initialized_data.py <br/>
-   ---- # this will take some time  #----
-   ( push the data present in data source in the subsequent table and in the required table )
-   ( creating the machine learning data set { input , output } )
+   ---- this will take some time-----<br/>
+   ( push the data present in data source in the subsequent table and in the required table )<br/>
+   ( creating the machine learning data set { input , output } )<br/>
    ( training of model using  LSTM  with step interpolation ) <br/>
 6) cd ..
-7) python run.py
-   ( start the 4 scheduler)
-      1) pooling data from restaurant in every hour
-         # pooling data request for a restaurant
-              SUCCESS ->  put the status of restaurant in dataset
-              FAILED -> predict the status of restaurant and then put it in dataset
+7) python run.py  <br/>
+   ( start the 4 scheduler) <br/>
+      1) pooling data from restaurant in every hour <br/>
+         # pooling data request for a restaurant<br/>
+           SUCCESS ->  put the status of restaurant in dataset<br/>
+           FAILED -> predict the status of restaurant and then put it in dataset<br/>
       3) updating the hourly_report_table in every hour from the data we get from pooling
       4) updating the daily_report_table in every day from the data we get from pooling
       5) updating the weekly_report_table in every week from the data we get from pooling
@@ -26,7 +26,6 @@
 1)
      REQUEST ->  /trigger_report , METHOD -> POST
      RESPONSE -> report_id
-
      # push the report details inside with report_table with following report_id  , {status -> Running} , timestamp , {location -> none}
      # check for latest report entry in report_table whose status is completed  and is of same day and same hour
         -> if present 
