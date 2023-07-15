@@ -1,9 +1,8 @@
-import sys,sqlite,time,schedule,env
+import sys,time,schedule,env
 from datetime import datetime
 from app.dao.hourly_report_dao import hourly_task
 from app.dao.daily_report_dao import daily_task
 from app.dao.weekly_report_dao import weekly_task
-from database_initialization.database_connection import DatabaseConnection
 from utils.calender_utils import Calender
 from utils.file_editing_utils import create_csv_file, merge_csv
 from app.dao.report_dao import update_report

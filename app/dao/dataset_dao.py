@@ -29,6 +29,11 @@ def insert_dataset(dataset):
 
 
 
+
+# pool the data from restaurant in every hour
+# if we get the response then we allocate the complete hour to that response
+# else we predict the response from out machine learning model and then allocate the complete hour to that predicted response
+
 # def update_the_dataset():
 #     db_connection = DatabaseConnection()
 #     responses = pool_restaurant_status()    
