@@ -26,24 +26,24 @@
 1)
      REQUEST ->  /trigger_report , METHOD -> POST
      RESPONSE -> report_id <br/>
-     #push the report details inside with report_table with following report_id  , {status -> Running} , timestamp , {location -> none}<br/>
-     #check for latest report entry in report_table whose status is completed  and is of same day and same hour<br/>
-      <pre><pre>   -> if present <br/>
-      <pre><pre><pre>        update the location of report to latest_report_location<br/>
-       <pre><pre><pre>       make the status completed<br/>
-     <pre><pre>   -> if not <br/>
-       <pre><pre><pre>       create hourly , daily and weekly csv file from respective table<br/>
-       <pre><pre><pre>       merge all 3 files and get the location<br/>
-       <pre><pre><pre>       update the status(completed) and location (merge file location)<br/>
+       push the report details inside with report_table with following report_id  , {status -> Running} , timestamp , {location -> none}<br/>
+       check for latest report entry in report_table whose status is completed  and is of same day and same hour<br/>
+         -> if present <br/>
+             update the location of report to latest_report_location<br/>
+             make the status completed<br/>
+         -> if not <br/>
+             create hourly , daily and weekly csv file from respective table<br/>
+             merge all 3 files and get the location<br/>
+             update the status(completed) and location (merge file location)<br/>
           <br/>
      
 2)
      REQUEST -> /get_report?report_id = {report_id from trigger_report }   ,METHOD -> GET
      RESPONSE -> csv file  <br/>
-                # format of csv file <br/>
+                  format of csv file <br/>
                   store_id, uptime_last_hr , downtime_last_hr , uptime_last_day , downtime_last_day , uptime_last_week , downtime_last_week<br/>
       <br/>
-     #report status is running  ,then return running<br/>
-     #report status is completed , then return csv file from the location of report     <br/> 
+     report status is running  ,then return running<br/>
+     report status is completed , then return csv file from the location of report     <br/> 
 
                   
