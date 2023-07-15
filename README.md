@@ -4,13 +4,13 @@
 1) cd database_initialization/
 2) python migration.py
   ( create all required tables at one go )
-4) python initialized_data.py
-----# this will take some time  #----
+4) python initialized_data.py <br/>
+   ---- # this will take some time  #----
    ( push the data present in data source in the subsequent table and in the required table )
    ( creating the machine learning data set { input , output } )
-   ( training of model using  LSTM  with step interpolation )
-5) cd ..
-6) python run.py
+   ( training of model using  LSTM  with step interpolation ) <br/>
+6) cd ..
+7) python run.py
    ( start the 4 scheduler)
       1) pooling data from restaurant in every hour
          # pooling data request for a restaurant
