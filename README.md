@@ -4,7 +4,7 @@
 1) cd database_initialization/<br/><br/>
 2) python migration.py<br/>
   ( create all required tables at one go )<br/><br/>
-4) python initialized_data.py <br/>
+4) python initialized_data.py <br/><br/>
    ---- this will take some time-----<br/>
    ( push the data present in data source in the subsequent table and in the required table )<br/>
    ( creating the machine learning data set { input , output } )<br/>
@@ -25,7 +25,7 @@
 # 2 routes  
 1)
      REQUEST ->  /trigger_report , METHOD -> POST
-     RESPONSE -> report_id <br/>
+     RESPONSE -> report_id <br/><br/>
        push the report details inside with report_table with following report_id  , {status -> Running} , timestamp , {location -> none}<br/>
        check for latest report entry in report_table whose status is completed  and is of same day and same hour<br/>
          -> if present <br/>
@@ -39,7 +39,7 @@
      
 2)
      REQUEST -> /get_report?report_id = {report_id from trigger_report }   ,METHOD -> GET
-     RESPONSE -> csv file  <br/>
+     RESPONSE -> csv file  <br/><br/>
                   format of csv file <br/>
                   store_id, uptime_last_hr , downtime_last_hr , uptime_last_day , downtime_last_day , uptime_last_week , downtime_last_week<br/>
       <br/>
