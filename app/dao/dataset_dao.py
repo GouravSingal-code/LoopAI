@@ -1,6 +1,7 @@
 from database_connection import DatabaseConnection
 from dao.hourly_report_dao import pool_restaurant_status
 from modeling.prediction import prediction
+from calender_utils import Calendar
 
 def create_dataset_table():
     db_connection = DatabaseConnection()
