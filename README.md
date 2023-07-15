@@ -5,10 +5,10 @@
 2) python migration.py
   ( create all required tables at one go )
 4) python initialized_data.py
----- this will take some time  -----
-( push the data present in data source in the subsequent table and in the required table )
-( creating the machine learning data set { input , output } )
-( training of model using  LSTM  with step interpolation )
+----# this will take some time  #----
+   ( push the data present in data source in the subsequent table and in the required table )
+   ( creating the machine learning data set { input , output } )
+   ( training of model using  LSTM  with step interpolation )
 5) cd ..
 6) python run.py
    ( start the 4 scheduler)
