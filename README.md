@@ -32,18 +32,18 @@
           &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;   update the location of report to latest_report_location<br/>
           &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;   make the status completed<br/>
          &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; -> if not <br/>
-         &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;    create hourly , daily and weekly csv file from respective table<br/>
-          &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;   merge all 3 files and get the location<br/>
-           &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   update the status(completed) and location (merge file location)<br/>
+           &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;   create hourly , daily and weekly csv file from respective table<br/>
+           &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;   merge all 3 files and get the location<br/>
+           &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;   update the status(completed) and location (merge file location)<br/>
           <br/>
      
 2)
      REQUEST -> /get_report?report_id = {report_id from trigger_report }   ,METHOD -> GET <br/>
      RESPONSE -> csv file  <br/><br/>
       &nbsp;&nbsp; &nbsp;&nbsp;            format of csv file <br/>
-      &nbsp;&nbsp; &nbsp;&nbsp;            {store_id, uptime_last_hr , downtime_last_hr , uptime_last_day , downtime_last_day , uptime_last_week , downtime_last_week}<br/>
+      &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;             {store_id, uptime_last_hr , downtime_last_hr , uptime_last_day , downtime_last_day , uptime_last_week , downtime_last_week}<br/>
       <br/>
-       &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;      report status is running  ,then return running<br/>
+       &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;      report status is running  ,then return "Running"<br/>
        &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;        report status is completed , then return csv file from the location of report     <br/> 
 
                   
