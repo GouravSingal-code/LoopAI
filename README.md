@@ -9,7 +9,7 @@
    ( push the data present in data source in the subsequent table and in the required table )<br/>
    ( creating the machine learning data set { input , output } )<br/>
    ( training of model using  LSTM  with step interpolation ) <br/><br/>
-6) cd .. /<br/><br/>
+6) cd .. <br/><br/>
 7) python run.py  <br/><br/>
    ( start the 4 scheduler) <br/>
       1) pooling data from restaurant in every hour <br/>
@@ -28,13 +28,13 @@
      RESPONSE -> report_id <br/>
      #push the report details inside with report_table with following report_id  , {status -> Running} , timestamp , {location -> none}<br/>
      #check for latest report entry in report_table whose status is completed  and is of same day and same hour<br/>
-         -> if present <br/>
-              update the location of report to latest_report_location<br/>
-              make the status completed<br/>
-        -> if not <br/>
-              create hourly , daily and weekly csv file from respective table<br/>
-              merge all 3 files and get the location<br/>
-              update the status(completed) and location (merge file location)<br/>
+      <pre><pre>   -> if present <br/>
+      <pre><pre><pre>        update the location of report to latest_report_location<br/>
+       <pre><pre><pre>       make the status completed<br/>
+     <pre><pre>   -> if not <br/>
+       <pre><pre><pre>       create hourly , daily and weekly csv file from respective table<br/>
+       <pre><pre><pre>       merge all 3 files and get the location<br/>
+       <pre><pre><pre>       update the status(completed) and location (merge file location)<br/>
           <br/>
      
 2)
