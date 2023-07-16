@@ -63,7 +63,7 @@ def update_the_dataset():
             #predict 
             # to predict we need =  what happend on previous day and what happend till now on the given day
             data = status_till_now(response.response.store_id, calender.date , response.time)
-            data.append(response.response.store_id, previous_day_status(calender.last_date))
+            data.append(previous_day_status(response.response.store_id, calender.last_date))
             predict = prediction(data)
             db_connection.execute_query("INSERT OR REPLACE INTO dataSet (store_id, date, time, status) VALUES (?, ?, ?, ?)", (response.response.store_id,calender.date, calender.time,predict))
     db_connection.commit()
