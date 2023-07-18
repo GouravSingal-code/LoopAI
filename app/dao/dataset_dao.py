@@ -1,7 +1,7 @@
 from database_connection import DatabaseConnection
 from dao.hourly_report_dao import pool_restaurant_status
 from modeling.prediction import prediction
-from calender_utils import Calendar
+from calender_utils import Calender
 
 def create_dataset_table():
     db_connection = DatabaseConnection()
@@ -56,7 +56,7 @@ def update_the_dataset():
     db_connection = DatabaseConnection()
     responses = pool_restaurant_status()    
     for response in responses:
-        calender = Calendar(response.timestamp)
+        calender = Calender(response.timestamp)
         if response.success == True:
             db_connection.execute_query("INSERT OR REPLACE INTO dataSet (store_id, date, time, status) VALUES (?, ?, ?, ?)", (response.response.store_id,calender.date, calender.time,response.response.status,))
         else:

@@ -10,8 +10,7 @@ class DatabaseConnection:
         return cls._instance
 
     def get_connection(self):
-        if self.conn is None:
-            self.conn = sqlite3.connect('database.db')
+        self.conn = sqlite3.connect('database.db')
         return self.conn
 
     def execute_query(self, query, params=None):

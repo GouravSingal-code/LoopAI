@@ -22,7 +22,7 @@ from database_connection import DatabaseConnection
 db_connection = DatabaseConnection()
 
 def insert_business_hrs(path):
-    with open(os.path.abspath(path), 'r') as csv_file:
+    with open(path, 'r') as csv_file:
         csv_reader = csv.reader(csv_file)
         next(csv_reader)
         for row in csv_reader:
@@ -31,7 +31,7 @@ def insert_business_hrs(path):
 
 def insert_store_status(path):
     weekdays = {'Monday':0 , 'Tuesday':1, 'Wednesday':2, 'Thursday':3, 'Friday':4, 'Saturday':6, 'Sunday':6}
-    with open(os.path.abspath(path), 'r') as csv_file:
+    with open(path, 'r') as csv_file:
         csv_reader = csv.reader(csv_file)
         next(csv_reader)
         with ThreadPoolExecutor(max_workers=5) as executor:
@@ -54,7 +54,7 @@ def insert_store_status(path):
                     db_connection.execute_query("INSERT OR REPLACE  INTO storeStatus (store_id, status, timeStamp_utc, date, time, day) VALUES (?, ?, ?, ?, ?, ?)", (row[0],row[1],row[2],row[3],row[4],row[5],))
 
 def insert_timezone(path):
-    with open(os.path.abspath(path), 'r') as csv_file:
+    with open(path, 'r') as csv_file:
         csv_reader = csv.reader(csv_file)
         next(csv_reader)
         for row in csv_reader:
@@ -77,16 +77,16 @@ def insert_store_ids():
 
 
 print("start --- filling store_business_hrs table")
-insert_business_hrs('data_source/business_hours.csv')
-print("complete --- filling business_hrs table")
+insert_business_hrs('c:\\Users\\GOURAV\\Desktop\\loopAI\\data_source\\business_hours.csv')
+print("complete --- filling store_business_hrs table")
 
 print("start --- filling store_timezone table")
-insert_timezone('data_source/timezone.csv')
-print("complete --- filling timezone table")
+insert_timezone('c:\\Users\\GOURAV\\Desktop\\loopAI\\data_source\\timezone.csv')
+print("complete --- filling store_timezone table")
 
 print("start --- filling store_status table")
-insert_store_status('data_source/store_status.csv')
-print("complete --- filling store_status table")
+insert_store_status('c:\\Users\\GOURAV\\Desktop\\loopAI\\data_source\\store_status.csv')
+print("complete -- filling store_status table")
 
 print("start --- filling store_ids table")
 insert_store_ids()

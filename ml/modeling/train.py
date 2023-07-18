@@ -18,6 +18,6 @@ def train_model(input_array, output_array):
     model.compile(optimizer='adam', loss='mean_squared_error')
     model.fit(train_x, train_y, epochs=2, batch_size=32)
     print("saving the model")
-    save_model(model, 'ml/modeling/' + env.MODEL_NAME + str(env.STEP_INTERPOLATION_VALUE))
+    save_model(model,'C:\\Users\\GOURAV\\Desktop\\loopAI\\ml\\modeling\\'+ env.MODEL_NAME + str(env.STEP_INTERPOLATION_VALUE))
     print("evaluating the model")
     evaluate_model(test_x, test_y)
