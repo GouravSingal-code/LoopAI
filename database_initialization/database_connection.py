@@ -10,7 +10,7 @@ class DatabaseConnection:
         return cls._instance
 
     def get_connection(self):
-        self.conn = sqlite3.connect('database.db')
+        self.conn = sqlite3.connect('C:\\Users\\GOURAV\\Desktop\\loopAI\\database.db')
         return self.conn
 
     def execute_query(self, query, params=None):
