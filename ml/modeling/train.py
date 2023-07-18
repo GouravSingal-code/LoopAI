@@ -16,7 +16,7 @@ def train_model(input_array, output_array):
     model.add(LSTM(units=50))
     model.add(Dense(units=1))
     model.compile(optimizer='adam', loss='mean_squared_error')
-    model.fit(train_x, train_y, epochs=2, batch_size=32)
+    model.fit(train_x, train_y, epochs=10, batch_size=32)
     print("saving the model")
     save_model(model,env.PATH_DIR  + '\\ml\\modeling\\'+ env.MODEL_NAME + str(env.STEP_INTERPOLATION_VALUE))
     print("evaluating the model")

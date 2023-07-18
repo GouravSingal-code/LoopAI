@@ -18,10 +18,10 @@ def stepInterpolation(store_id, date, time_stamps , activity_status, input, outp
 
       #creating a input and output dataset for training purpose of machine learning model
       input1 = current + zeroListGenerator(list_size-len(current))
-      input2 = [previous[index]]
+      input2 = [int(previous[index])]
       input.append(input1 + input2)
-      output.append([row['timestamp'].strftime('%H:%M')])
-      current.append(row['timestamp'].strftime('%H:%M'))
+      output.append(int(row['activity_status']))
+      current.append(int(row['activity_status']))
 
       # inserting the data into dataset table      
       db_connection.execute_query("INSERT OR REPLACE INTO dataSet (store_id, date, time, status) VALUES (?, ?, ?, ?)", (store_id,date, row['timestamp'].strftime('%H:%M'),row['activity_status'],))
