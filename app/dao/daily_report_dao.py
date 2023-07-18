@@ -1,9 +1,9 @@
-from database_connection import DatabaseConnection
+from database_connection import get_db_connection
 import env
 
 
 def create_daily_report_table():
-    db_connection = DatabaseConnection()
+    db_connection = get_db_connection()
     create_daily_report_table_query = '''
     CREATE TABLE IF NOT EXISTS dailyReport (
         store_id BIGINT PRIMARY KEY,
@@ -16,7 +16,7 @@ def create_daily_report_table():
     db_connection.close()
 
 def daily_task(last_date):
-    db_connection = DatabaseConnection()
+    db_connection = get_db_connection()
     get_data = '''
     SELECT dataSet.store_id,
         SUM(CASE WHEN  date = ? THEN Cast(status as int)*? ELSE 0 END) AS uptime_last_day,

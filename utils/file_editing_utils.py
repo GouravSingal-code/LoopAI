@@ -3,13 +3,13 @@ import sqlite3
 import csv
 import pandas as pd
 import env
-from database_initialization.database_connection import DatabaseConnection
+from database_initialization.database_connection import get_db_connection
 
 
 
 #create a csv file for the given table
 def create_csv_file(table_name,column_names):
-    db_connection = DatabaseConnection()
+    db_connection = get_db_connection()
     fetch_data = 'SELECT * FROM {}'.format(table_name)
     rows = db_connection.execute_query(fetch_data)
     csv_filename = table_name + '.csv'

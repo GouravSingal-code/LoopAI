@@ -1,10 +1,10 @@
-from database_connection import DatabaseConnection
+from database_connection import get_db_connection
 from dao.hourly_report_dao import pool_restaurant_status
 from modeling.prediction import prediction
 from calender_utils import Calender
 
 def create_dataset_table():
-    db_connection = DatabaseConnection()
+    db_connection = get_db_connection()
     create_dataset_table_query = '''
     CREATE TABLE IF NOT EXISTS dataSet (
         store_id TEXT,
@@ -19,7 +19,7 @@ def create_dataset_table():
     db_connection.close()
 
 def insert_dataset(dataset):
-    db_connection = DatabaseConnection()
+    db_connection = get_db_connection()
     insert_dataset_query = '''
      INSERT OR REPLACE INTO dataSet
      (store_id, date, time, status)
@@ -37,7 +37,7 @@ def insert_dataset(dataset):
 # else we predict the response from out machine learning model and then allocate the complete hour to that predicted response
 
 def status_till_now(store_id, date , time):
-    db_connection = DatabaseConnection()
+    db_connection = get_db_connection()
     get_status_till_now = '''
       Select dataSet.status from dataSet
       where dataSet.store_id = ? and dataSet.date=? and dataSet.time <= ?
@@ -45,7 +45,7 @@ def status_till_now(store_id, date , time):
     db_connection.execute_query(get_status_till_now, (store_id, date, time,))
 
 def previous_day_status(store_id, date):
-    db_connection = DatabaseConnection()
+    db_connection = get_db_connection()
     get_previous_day_status = '''
       Select dataSet.status from dataSet
       where dataSet.store_id = ? and dataSet.date=?
@@ -53,7 +53,7 @@ def previous_day_status(store_id, date):
     db_connection.execute_query(get_previous_day_status, (store_id, date,))    
 
 def update_the_dataset():
-    db_connection = DatabaseConnection()
+    db_connection = get_db_connection()
     responses = pool_restaurant_status()    
     for response in responses:
         calender = Calender(response.timestamp)

@@ -1,11 +1,11 @@
 import asyncio, aiohttp
 from get_urls_utils import get_urls
-from database_connection import DatabaseConnection
+from database_connection import get_db_connection
 import env
 
 
 def create_hourly_report_table():
-    db_connection = DatabaseConnection()
+    db_connection = get_db_connection()
     create_hourly_report_table_query = '''
     CREATE TABLE IF NOT EXISTS hourlyReport (
         store_id BIGINT PRIMARY KEY,
@@ -18,7 +18,7 @@ def create_hourly_report_table():
     db_connection.close()
 
 def hourly_task(last_hr_start , last_hr_end , date):
-    db_connection = DatabaseConnection()
+    db_connection = get_db_connection()
     get_data = '''
     SELECT dataSet.store_id,
         SUM(CASE WHEN time >= ? AND time <= ? AND date = ? THEN Cast(status as int)*? ELSE 0 END) AS uptime_last_hr,

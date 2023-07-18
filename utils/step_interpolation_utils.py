@@ -1,6 +1,6 @@
 import env
 import pandas as pd
-from database_connection import DatabaseConnection
+from database_connection import get_db_connection
 from list_generator_utils import randomListGenerator, zeroListGenerator
 
 
@@ -9,7 +9,7 @@ def stepInterpolation(store_id, date, time_stamps , activity_status, input, outp
    df.set_index('timestamp', inplace=True)
    df_interpolated = df.resample(str(env.STEP_INTERPOLATION_VALUE)+'T').interpolate(method='pad').bfill()
    df_interpolated.reset_index(inplace=True)
-   db_connection = DatabaseConnection()
+   db_connection = get_db_connection()
    
    list_size = 1440/env.STEP_INTERPOLATION_VALUE
    previous = randomListGenerator(list_size)

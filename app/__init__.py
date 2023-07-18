@@ -1,9 +1,13 @@
-import sys, datetime
-sys.path.append('c:\\Users\\GOURAV\\Desktop\\loopAI\\app')
-sys.path.append('c:\\Users\\GOURAV\\Desktop\\loopAI')
-sys.path.append('c:\\Users\\GOURAV\\Desktop\\loopAI\\utils')
-sys.path.append('c:\\Users\\GOURAV\\Desktop\\loopAI\\database_initialization')
-sys.path.append('c:\\Users\\GOURAV\\Desktop\\loopAI\\ml')
+import sys, datetime,os 
+current_dir = os.getcwd()
+parent_dir = os.path.dirname(current_dir)
+sys.path.append(parent_dir)
+import env
+sys.path.append(env.PATH_DIR  + '\\app')
+sys.path.append(env.PATH_DIR  + '\\data_source')
+sys.path.append(env.PATH_DIR  + '\\database_initialization')
+sys.path.append(env.PATH_DIR  + '\\ml')
+sys.path.append(env.PATH_DIR  + '\\utils')
 
 from flask import Flask
 from app.scheduler import schedule_jobs

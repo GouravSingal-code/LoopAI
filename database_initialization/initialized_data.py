@@ -1,12 +1,15 @@
-import sys
-sys.path.append('c:\\Users\\GOURAV\\Desktop\\loopAI')
-sys.path.append('c:\\Users\\GOURAV\\Desktop\\loopAI\\app')
-sys.path.append('c:\\Users\\GOURAV\\Desktop\\loopAI\\data_source')
-sys.path.append('c:\\Users\\GOURAV\\Desktop\\loopAI\\database_initialization')
-sys.path.append('c:\\Users\\GOURAV\\Desktop\\loopAI\\ml')
-sys.path.append('c:\\Users\\GOURAV\\Desktop\\loopAI\\utils')
+import sys,os
+current_dir = os.getcwd()
+parent_dir = os.path.dirname(current_dir)
+sys.path.append(parent_dir)
+import env
+sys.path.append(env.PATH_DIR  + '\\app')
+sys.path.append(env.PATH_DIR  + '\\data_source')
+sys.path.append(env.PATH_DIR  + '\\database_initialization')
+sys.path.append(env.PATH_DIR  + '\\ml')
+sys.path.append(env.PATH_DIR  + '\\utils')
 
-import csv,os
+import csv
 import datetime
 from check_utils import check
 from dao.store_dao import insert_store_id
@@ -18,8 +21,8 @@ from dao.store_time_zone_dao import get_unique_store_timezone_ids, insert_timezo
 from concurrent.futures import ThreadPoolExecutor
 
 
-from database_connection import DatabaseConnection
-db_connection = DatabaseConnection()
+from database_connection import get_db_connection
+db_connection = get_db_connection()
 
 def insert_business_hrs(path):
     with open(path, 'r') as csv_file:
@@ -77,15 +80,15 @@ def insert_store_ids():
 
 
 print("start --- filling store_business_hrs table")
-insert_business_hrs('c:\\Users\\GOURAV\\Desktop\\loopAI\\data_source\\business_hours.csv')
+insert_business_hrs(env.PATH_DIR  + '\\data_source\\business_hours.csv')
 print("complete --- filling store_business_hrs table")
 
 print("start --- filling store_timezone table")
-insert_timezone('c:\\Users\\GOURAV\\Desktop\\loopAI\\data_source\\timezone.csv')
+insert_timezone(env.PATH_DIR  + '\\data_source\\timezone.csv')
 print("complete --- filling store_timezone table")
 
 print("start --- filling store_status table")
-insert_store_status('c:\\Users\\GOURAV\\Desktop\\loopAI\\data_source\\store_status.csv')
+insert_store_status(env.PATH_DIR  + '\\data_source\\store_status.csv')
 print("complete -- filling store_status table")
 
 print("start --- filling store_ids table")

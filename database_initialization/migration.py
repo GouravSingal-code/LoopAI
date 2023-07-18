@@ -1,11 +1,13 @@
-import sys
-sys.path.append('c:\\Users\\GOURAV\\Desktop\\loopAI')
-sys.path.append('c:\\Users\\GOURAV\\Desktop\\loopAI\\app')
-sys.path.append('c:\\Users\\GOURAV\\Desktop\\loopAI\\data_source')
-sys.path.append('c:\\Users\\GOURAV\\Desktop\\loopAI\\database_initialization')
-sys.path.append('c:\\Users\\GOURAV\\Desktop\\loopAI\\ml')
-sys.path.append('c:\\Users\\GOURAV\\Desktop\\loopAI\\utils')
-
+import sys,os
+current_dir = os.getcwd()
+parent_dir = os.path.dirname(current_dir)
+sys.path.append(parent_dir)
+import env
+sys.path.append(env.PATH_DIR  + '\\app')
+sys.path.append(env.PATH_DIR  + '\\data_source')
+sys.path.append(env.PATH_DIR  + '\\database_initialization')
+sys.path.append(env.PATH_DIR  + '\\ml')
+sys.path.append(env.PATH_DIR  + '\\utils')
 from dao.daily_report_dao import create_daily_report_table
 from dao.dataset_dao import create_dataset_table
 from dao.hourly_report_dao import create_hourly_report_table

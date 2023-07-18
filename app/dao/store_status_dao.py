@@ -1,11 +1,11 @@
 
 from calender_utils import get_utc_to_local_timezone
-from database_connection import DatabaseConnection
+from database_connection import get_db_connection
 
 
 
 def create_store_status_table():
-    db_connection = DatabaseConnection()
+    db_connection = get_db_connection()
     create_storeStatus_table_query = '''
     CREATE TABLE IF NOT EXISTS storeStatus (
         store_id BIGINT,
@@ -22,7 +22,7 @@ def create_store_status_table():
     db_connection.close()
 
 def getDate(type):
-    db_connection = DatabaseConnection()
+    db_connection = get_db_connection()
     get_date = '''
      Select Min(date) from storeStatus
      ''' if type == "min" else '''
@@ -33,7 +33,7 @@ def getDate(type):
 
 
 def getAvailableStatus(store_id , date , start_time , end_time, time_zone):
-    db_connection = DatabaseConnection()
+    db_connection = get_db_connection()
     get_available_status = '''
       SELECT * from storeStatus
       WHERE store_id = ?
@@ -51,7 +51,7 @@ def getAvailableStatus(store_id , date , start_time , end_time, time_zone):
 
 
 def insert_store_status_details(store_status):
-    db_connection = DatabaseConnection()
+    db_connection = get_db_connection()
     db_connection.execute_query("INSERT OR REPLACE  INTO storeStatus (store_id, status, timeStamp_utc, date, time, day) VALUES (?, ?, ?, ?, ?, ?)", (store_status.store_id, store_status.status, store_status.timeStamp_utc, store_status.date, store_status.time, store_status.day))
     db_connection.commit()
     db_connection.close()
@@ -59,6 +59,6 @@ def insert_store_status_details(store_status):
 
 
 def get_unique_store_status_ids():
-    db_connection = DatabaseConnection()
+    db_connection = get_db_connection()
     return db_connection.execute_query("SELECT distinct storeStatus.store_id FROM storeStatus")
 
