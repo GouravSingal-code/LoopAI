@@ -7,7 +7,7 @@
   https://drive.google.com/file/d/1vHDLU0iiwenJ-9hAExydJdIVV1Ijazqz/view?usp=sharing
 
 # steps to run projects
-0) change the location of PATH_DIR in env file.
+0) change the location of PATH_DIR in env file.<br/><br/>
 1) cd database_initialization/<br/><br/>
 2) python migration.py<br/>
   ( create all required tables at one go )<br/><br/>
