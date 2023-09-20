@@ -4,7 +4,7 @@
   https://www.loom.com/share/b8ad71a7e6954b8f94f0c64666273de3?sid=42e0bc14-4325-4e52-b563-6ffa98d1fcd8
 
 # Doc
-  https://drive.google.com/file/d/1vHDLU0iiwenJ-9hAExydJdIVV1Ijazqz/view?usp=sharing
+https://drive.google.com/file/d/1vHDLU0iiwenJ-9hAExydJdIVV1Ijazqz/view?usp=sharing](https://drive.google.com/file/d/1HC2QOxZuZcmJ1Q0kZr_EUQnJoA4JO6eC/view?usp=sharing
 
 # steps to run projects
 0) change the location of PATH_DIR in env file.<br/><br/>
