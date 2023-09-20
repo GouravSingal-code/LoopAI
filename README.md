@@ -8,17 +8,17 @@
 https://drive.google.com/file/d/1HC2QOxZuZcmJ1Q0kZr_EUQnJoA4JO6eC/view?usp=sharing
 
 # Steps to run projects
-0) change the location of PATH_DIR in env file.<br/><br/>
-1) cd database_initialization/<br/><br/>
+0) change the location of PATH_DIR in env file.<br/>
+1) cd database_initialization/<br/>
 2) python migration.py<br/>
-  ( create all required tables at one go )<br/><br/>
-4) python initialized_data.py <br/><br/>
+  ( create all required tables at one go )<br/>
+4) python initialized_data.py <br/>
    ---- this will take some time-----<br/>
    ( push the data present in data source in the subsequent table and in the required table )<br/>
    ( creating the machine learning data set { input , output } )<br/>
-   ( training of model using  LSTM  with step interpolation ) <br/><br/>
-6) cd .. <br/><br/>
-7) python run.py  <br/><br/>
+   ( training of model using  LSTM  with step interpolation ) <br/>
+6) cd .. <br/>
+7) python run.py  <br/>
    ( start the 4 scheduler) <br/>
       1) pooling data from restaurant in every hour <br/>
            ----pooling data request for a restaurant----<br/>
