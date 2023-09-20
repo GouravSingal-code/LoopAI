@@ -1,12 +1,13 @@
 # LoopAI
 
-# demo link
+# Problem Statement
+  https://docs.google.com/document/d/1KQdSvRWS9CVRvY-umC6HqUDZETWr9DOvOOrV89DnFVo/edit?usp=sharing
+# Demo Link
   https://www.loom.com/share/b8ad71a7e6954b8f94f0c64666273de3?sid=42e0bc14-4325-4e52-b563-6ffa98d1fcd8
-
 # Doc
 https://drive.google.com/file/d/1HC2QOxZuZcmJ1Q0kZr_EUQnJoA4JO6eC/view?usp=sharing
 
-# steps to run projects
+# Steps to run projects
 0) change the location of PATH_DIR in env file.<br/><br/>
 1) cd database_initialization/<br/><br/>
 2) python migration.py<br/>
@@ -29,7 +30,7 @@ https://drive.google.com/file/d/1HC2QOxZuZcmJ1Q0kZr_EUQnJoA4JO6eC/view?usp=shari
   
 
 
-# 2 routes  
+# Public Endpoints  
 1)
      REQUEST ->  /trigger_report , METHOD -> POST <br/>
      RESPONSE -> report_id <br/><br/>
